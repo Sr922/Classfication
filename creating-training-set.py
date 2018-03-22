@@ -8,7 +8,7 @@ sys.setdefaultencoding('utf-8')
 
 db = psycopg2.connect("host='localhost' dbname=stackoverflow user=postgres password='sindhu93'")
 cur = db.cursor()
-query = 'select id,title, body from posts p2 where p2.tags Like \'%<java>%\' and p2.posttypeid=1  and p2.difficulty_level is null LIMIT 5000'
+query = 'select id,title, body from posts p2 where p2.tags Like \'%<java>%\' and p2.posttypeid=1  and p2.difficulty_level is null LIMIT 40000'
 cur.execute(query)
 
 record = []
@@ -29,27 +29,27 @@ with open('./DataSet/toClassify.csv', 'w') as csvfile:
     for line in record:
     	output_writer.writerow(line)
 
-query = 'select id,title, body, difficulty_level from posts p2 where p2.tags Like \'%<java>%\' and p2.posttypeid=1  and p2.difficulty_level is not null'
-cur.execute(query)
+# query = 'select id,title, body, difficulty_level from posts p2 where p2.tags Like \'%<java>%\' and p2.posttypeid=1  and p2.difficulty_level is not null'
+# cur.execute(query)
 
-record = []
-for line in cur:
-	#record.append(data)
-	body = line[1] + line[2]
-	temp = []
-	temp.append(line[0])
-	#temp.append(line[2])
-	temp.append(line[3])
-	temp.append(body)
-	record.append(temp)
+# record = []
+# for line in cur:
+# 	#record.append(data)
+# 	body = line[1] + line[2]
+# 	temp = []
+# 	temp.append(line[0])
+# 	#temp.append(line[2])
+# 	temp.append(line[3])
+# 	temp.append(body)
+# 	record.append(temp)
 	
-with open('./DataSet/training-data.csv', 'w') as csvfile:
-    output_writer = csv.writer(csvfile, delimiter=',',
-                            )
-    output_writer.writerow(['Id','Body', 'Difficulty Level'])
+# with open('./DataSet/training-data.csv', 'w') as csvfile:
+#     output_writer = csv.writer(csvfile, delimiter=',',
+#                             )
+#     output_writer.writerow(['Id','Body', 'Difficulty Level'])
 
-    for line in record:
-    	output_writer.writerow(line)
+#     for line in record:
+#     	output_writer.writerow(line)
 
 
 # reader = csv.reader(open('./DataSet/ForBasicStudy.csv', 'rU'), delimiter= ",")
