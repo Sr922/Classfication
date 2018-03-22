@@ -283,33 +283,33 @@ for developer in developers:
 
 		if(answer['question_type'].lower() == 'easy'):
 			if(answer['developer experience'].lower() == 'novice'):
-				easy_novice_polarity.append(answer['subjectivity'])
+				easy_novice_polarity.append(answer['polarity'])
 			if(answer['developer experience'].lower() == 'beginner'):
-				easy_beginner_polarity.append(answer['subjectivity'])
+				easy_beginner_polarity.append(answer['polarity'])
 			if(answer['developer experience'].lower() == 'intermediate'):
-				easy_intermediate_polarity.append(answer['subjectivity'])
+				easy_intermediate_polarity.append(answer['polarity'])
 			if(answer['developer experience'].lower() == 'experienced'):
-				easy_experienced_polarity.append(answer['subjectivity'])
+				easy_experienced_polarity.append(answer['polarity'])
 
 		if(answer['question_type'].lower() == 'medium'):
 			if(answer['developer experience'].lower() == 'novice'):
-				medium_novice_polarity.append(answer['subjectivity'])
+				medium_novice_polarity.append(answer['polarity'])
 			if(answer['developer experience'].lower() == 'beginner'):
-				medium_beginner_polarity.append(answer['subjectivity'])
+				medium_beginner_polarity.append(answer['polarity'])
 			if(answer['developer experience'].lower() == 'intermediate'):
-				medium_intermediate_polarity.append(answer['subjectivity'])
+				medium_intermediate_polarity.append(answer['polarity'])
 			if(answer['developer experience'].lower() == 'experienced'):
-				medium_experienced_polarity.append(answer['subjectivity'])
+				medium_experienced_polarity.append(answer['polarity'])
 
 		if(answer['question_type'].lower() == 'difficult'):
 			if(answer['developer experience'].lower() == 'novice'):
-				difficult_novice_polarity.append(answer['subjectivity'])
+				difficult_novice_polarity.append(answer['polarity'])
 			if(answer['developer experience'].lower() == 'beginner'):
-				difficult_beginner_polarity.append(answer['subjectivity'])
+				difficult_beginner_polarity.append(answer['polarity'])
 			if(answer['developer experience'].lower() == 'intermediate'):
-				difficult_intermediate_polarity.append(answer['subjectivity'])
+				difficult_intermediate_polarity.append(answer['polarity'])
 			if(answer['developer experience'].lower() == 'experienced'):
-				difficult_experienced_polarity.append(answer['subjectivity'])	
+				difficult_experienced_polarity.append(answer['polarity'])	
 
 		## Word Count
 		easy_novice_word_count = []
@@ -329,33 +329,33 @@ for developer in developers:
 
 		if(answer['question_type'].lower() == 'easy'):
 			if(answer['developer experience'].lower() == 'novice'):
-				easy_novice_word_count.append(answer['subjectivity'])
+				easy_novice_word_count.append(answer['wordCount'])
 			if(answer['developer experience'].lower() == 'beginner'):
-				easy_beginner_word_count.append(answer['subjectivity'])
+				easy_beginner_word_count.append(answer['wordCount'])
 			if(answer['developer experience'].lower() == 'intermediate'):
-				easy_intermediate_word_count.append(answer['subjectivity'])
+				easy_intermediate_word_count.append(answer['wordCount'])
 			if(answer['developer experience'].lower() == 'experienced'):
-				easy_experienced_word_count.append(answer['subjectivity'])
+				easy_experienced_word_count.append(answer['wordCount'])
 
 		if(answer['question_type'].lower() == 'medium'):
 			if(answer['developer experience'].lower() == 'novice'):
-				medium_novice_word_count.append(answer['subjectivity'])
+				medium_novice_word_count.append(answer['wordCount'])
 			if(answer['developer experience'].lower() == 'beginner'):
-				medium_beginner_word_count.append(answer['subjectivity'])
+				medium_beginner_word_count.append(answer['wordCount'])
 			if(answer['developer experience'].lower() == 'intermediate'):
-				medium_intermediate_word_count.append(answer['subjectivity'])
+				medium_intermediate_word_count.append(answer['wordCount'])
 			if(answer['developer experience'].lower() == 'experienced'):
-				medium_experienced_word_count.append(answer['subjectivity'])
+				medium_experienced_word_count.append(answer['wordCount'])
 
 		if(answer['question_type'].lower() == 'difficult'):
 			if(answer['developer experience'].lower() == 'novice'):
-				difficult_novice_word_count.append(answer['subjectivity'])
+				difficult_novice_word_count.append(answer['wordCount'])
 			if(answer['developer experience'].lower() == 'beginner'):
-				difficult_beginner_word_count.append(answer['subjectivity'])
+				difficult_beginner_word_count.append(answer['wordCount'])
 			if(answer['developer experience'].lower() == 'intermediate'):
-				difficult_intermediate_word_count.append(answer['subjectivity'])
+				difficult_intermediate_word_count.append(answer['wordCount'])
 			if(answer['developer experience'].lower() == 'experienced'):
-				difficult_experienced_word_count.append(answer['subjectivity'])		
+				difficult_experienced_word_count.append(answer['wordCount'])		
 
 
 	developers[developer]['subjectivity'] = {}
@@ -692,7 +692,7 @@ p = mannwhitneyu(easy['novice']['subjectivity'], easy['beginner']['subjectivity'
 print p
 if(p[1] <= 0.005 and p[1] > -1):
 	print('Novice vs Beginner differs significantly ',p[1])
-	print(fxsize(easy['beginner']['subjectivity'],easy['intermediate']['subjectivity']))
+	print(fxsize(easy['novice']['subjectivity'],easy['beginner']['subjectivity']))
 toUploaded.append(['Easy', 'Subjectivity', 'Novice', 'Beginner', p[1], fxsize(easy['beginner']['subjectivity'],easy['intermediate']['subjectivity'])])
 
 p = mannwhitneyu(easy['novice']['subjectivity'], easy['intermediate']['subjectivity'])
@@ -739,7 +739,7 @@ p = mannwhitneyu(medium['novice']['subjectivity'], medium['beginner']['subjectiv
 print p
 if(p[1] <= 0.005 and p[1] > -1):
 	print('Novice vs Beginner differs significantly ',p[1])
-	print(fxsize(medium['novice']['subjectivity'],medium['intermediate']['subjectivity']))
+	print(fxsize(medium['novice']['subjectivity'],medium['beginner']['subjectivity']))
 toUploaded.append(['Medium', 'Subjectivity', 'Novice', 'Beginner', p[1], fxsize(medium['novice']['subjectivity'],medium['beginner']['subjectivity'])])
 
 p = mannwhitneyu(medium['novice']['subjectivity'], medium['intermediate']['subjectivity'])
@@ -892,7 +892,7 @@ p = mannwhitneyu(medium['intermediate']['polarity'], medium['experienced']['pola
 print p
 if(p[1] <= 0.05):
 	print('Intermediate vs Experienced differs significantly ',p[1])
-	print(fxsize(medium['intermediate']['polarity'],medium['intermediate']['polarity']))
+	print(fxsize(medium['intermediate']['polarity'],medium['experienced']['polarity']))
 
 print('\n\nDifficult') 
 # p = mannwhitneyu([np.mean(difficult['novice']['polarity'])], [np.mean(difficult['beginner']['polarity'])])
